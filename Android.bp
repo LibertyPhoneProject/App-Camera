@@ -1,0 +1,11 @@
+android_app {
+    name: "Camera",
+
+    resource_dirs: ["app/src/main/res"],
+
+    sdk_version: "current",
+
+    srcs: ["app/src/main/**/*.java"],
+
+    product_specific: true,
+}
