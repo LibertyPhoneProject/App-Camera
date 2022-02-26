@@ -895,7 +895,7 @@
     <string name="preference_image_format_summary">Select the file format used for saving photos. This affects \"standard\" (not RAW) photos. Only JPEG supports saving Exif metadata. Note that PNG format is not truly lossless, instead it is converted from a JPEG at 100%% quality.\n%s</string>
 
     <string name="preference_camera_api">Camera API</string>
-    <string name="preference_camera_api_summary">Built by KuzonCode. Select Camera2 API to enable extra features such as manual modes for exposure, focus, white balance, along with RAW (if supported by the device). Changing the API will cause a restart.\n%s</string>
+    <string name="preference_camera_api_summary">Select Camera2 API to enable extra features such as manual modes for exposure, focus, white balance, along with RAW (if supported by the device). Changing the API will cause a restart.\n%s</string>
     <string name="preference_camera_api_old">Original camera API</string>
     <string name="preference_camera_api_camera2">Camera2 API</string>
 
