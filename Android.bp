@@ -1,5 +1,5 @@
 android_app {
-    name: "Camera3",
+    name: "Camera",
 
     resource_dirs: ["app/src/main/res"],
 
