@@ -26,19 +26,24 @@ jobs:
 
       - name: Build APK
         run: ./gradlew assembleRelease
-
+        
+      - name: Minipulate Output APK
+        run: |
+          mkdir actionfiles
+          mv app/build/outputs/apk/release/app-release-unsigned.apk actionfiles/net.sourceforge.opencamera.apk
+        
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: 'Camera'
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          path: actionfiles
           
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'app/build/outputs/apk/release/app-release-unsigned.apk'
+          source-directory: 'actionfiles'
           destination-github-username: 'LibertyPhoneProject'
           destination-repository-name: 'Vendor-GMS'
           target-directory: 'Camera/apk'
