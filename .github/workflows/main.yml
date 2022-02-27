@@ -41,7 +41,7 @@ jobs:
           source-directory: 'app/build/outputs/apk/release/app-release-unsigned.apk'
           destination-github-username: 'LibertyPhoneProject'
           destination-repository-name: 'Vendor-GMS'
-          destination_folder: 'Camera/net.sourceforge.opencamera.apk'
+          target-directory: 'Camera/net.sourceforge.opencamera.apk'
           user-email: libbot@kuzoncode.com
-          username: libbot
+          user-name: libbot
           target-branch: master
