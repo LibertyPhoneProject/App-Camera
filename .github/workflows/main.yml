@@ -38,8 +38,10 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'app/build/outputs/apk/release/'
+          source-directory: 'app/build/outputs/apk/release/app-release-unsigned.apk'
           destination-github-username: 'LibertyPhoneProject'
           destination-repository-name: 'Vendor-GMS'
+          destination_folder: 'Camera/net.sourceforge.opencamera.apk'
           user-email: libbot@kuzoncode.com
+          username: libbot
           target-branch: master
