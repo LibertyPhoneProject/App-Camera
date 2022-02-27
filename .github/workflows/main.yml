@@ -29,6 +29,9 @@ jobs:
 
       - name: Build APK
         run: ./gradlew assembleDebug
+        
+      - name: Dir Recursive
+        run: ls -R
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v2
