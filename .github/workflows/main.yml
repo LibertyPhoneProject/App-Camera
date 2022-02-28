@@ -38,15 +38,16 @@ jobs:
           name: 'Camera'
           path: actionfiles
           
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
+      - name: Push a file to another repository
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'actionfiles'
-          destination-github-username: 'LibertyPhoneProject'
-          destination-repository-name: 'Vendor-GMS'
-          target-directory: 'Camera/apk'
-          user-email: libbot@kuzoncode.com
-          user-name: libbot
-          target-branch: master
+          source_file: 'actionfiles/net.sourceforge.opencamera.apk'
+          destination_repo: 'LibertyPhoneProject/Vendor-GMS'
+          destination_folder: 'Camera'
+          user_email: 'libbot@kuzoncode.com'
+          user_name: 'libbot'
+          destination_branch: 'master'
+        
+
