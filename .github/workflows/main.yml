@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: LibertyPhoneProject/Push-APK@v1
+    - uses: LibertyPhoneProject/Push-APK@v2
       with:
         apk-name: net.sourceforge.opencamera.apk
         desitnation-folder: Camera
