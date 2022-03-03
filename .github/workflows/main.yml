@@ -12,9 +12,52 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: LibertyPhoneProject/Push-APK@v2
-      with:
-        apk-name: net.sourceforge.opencamera.apk
-        desitnation-folder: Camera
+      - uses: actions/checkout@v1
+      - name: JDK 8 Setup
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11.0.8
         
+      - name: Grant rights
+        run: chmod +x ./gradlew
 
+      - name: Build project
+        run: ./gradlew build
+
+      - name: Build APK
+        run: ./gradlew assembleRelease
+        
+      - name: Minipulate Output APK
+        run: |
+          mkdir actionfiles
+          mv app/build/outputs/apk/release/app-release-unsigned.apk actionfiles/net.sourceforge.opencamera.apk
+        
+      - name: Upload to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: 'Camera'
+          path: actionfiles
+          
+      - name: Push a file to another repository
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'actionfiles/net.sourceforge.opencamera.apk'
+          destination_repo: 'LibertyPhoneProject/Vendor-GMS'
+          destination_folder: 'Camera'
+          user_email: 'libbot@kuzoncode.com'
+          user_name: 'libbot'
+          destination_branch: 'master'
+          
+      - name: Push a file to another repository
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'actionfiles/net.sourceforge.opencamera.apk'
+          destination_repo: 'LibertyPhoneProject/Vendor-GMS'
+          destination_folder: 'Camera'
+          user_email: 'libbot@kuzoncode.com'
+          user_name: 'libbot'
+          destination_branch: 'reduce'
